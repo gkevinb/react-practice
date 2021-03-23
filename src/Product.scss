@@ -1,0 +1,17 @@
+@import "index";
+
+.product {
+    padding: 20px;
+    margin: 15px;
+    border: 1px solid $ERROR-RED;
+
+    .error {
+        color: $ERROR-RED;
+        font-weight: bolder;
+    }
+    
+    .price {
+        color: green
+    }
+}
+
