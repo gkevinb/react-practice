@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./Header";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Product from "./Product";
+import Joke from "./Joke";
 
 // BEM - Block Element Modifier
 // Block is like the components
@@ -29,6 +30,34 @@ function App() {
         setTodos([...todos, input]);
         setInput("");
     };
+
+    useEffect(() => {
+        console.log("rerender!")
+
+        return () => {
+            console.log("unmouanting")
+        }
+
+    }) // Second argument is optional, dependency array []
+    /*
+        Runs every rerender when there is no []
+        When there is an empty [], then it runs once the first time
+        Renders when state or prop changes
+    */
+   
+    useEffect(() => {
+        console.log("mounted once!!")
+    }, [])
+
+    useEffect(() => {
+        console.log("input updated!!" + input)
+
+        return () => {
+            // Cleanup function
+            console.log('clean up!')
+        }
+
+    }, [input])
 
     return (
         <div className="app">
@@ -75,6 +104,8 @@ function App() {
             {todos.map((todo) => (
                 <p>{todo}</p>
             ))}
+
+            <Joke />
         </div>
     );
 }
